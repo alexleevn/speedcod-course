@@ -17,6 +17,8 @@ class BooksForm extends React.Component {
             price: findDOMNode(this.refs.price).value
         }]
         console.log('Submit book: ', book);
+
+        // Update state to redux via action.
         this.props.postBooks(book);
     }
 

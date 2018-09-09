@@ -8,6 +8,7 @@ import { Grid, Col, Row, Button } from 'react-bootstrap';
 
 import BookItem from './bookItem';
 import BooksForm from './booksForm';
+import Cart from './cart';
 
 class BooksList extends React.Component {
     componentDidMount() {
@@ -18,11 +19,16 @@ class BooksList extends React.Component {
 
         // console.log('ARE WE ACCESSING THE STATE??: ', this.props.books);
 
-        const booksList = this.props.books.map(function (booksArr) {
+        'need to replace id by _id'
+        ///..................
+
+        console.log('BooksList rendering...');
+
+        const booksList = this.props.books.map(function (booksArr, i) {
             return (
-                <Col xs={12} md={4} key={booksArr.id}>
+                <Col xs={12} md={4} key={i}>
                     <BookItem
-                        id={booksArr.id}
+                        _id={booksArr._id}
                         title={booksArr.title}
                         description={booksArr.description}
                         price={booksArr.price}
@@ -33,6 +39,9 @@ class BooksList extends React.Component {
 
         return (
             <Grid>
+                <Row>
+                    <Cart/>
+                </Row>
                 <Row style={{ marginTop: '15px' }}>
                     <Col xs={12} sm={4}>
                         <BooksForm/>
