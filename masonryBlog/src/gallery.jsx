@@ -32,10 +32,17 @@ export default class Gallery extends React.Component {
     }
 
     render() {
-        const childElements = this.props.elements.map(function (e) {
+
+        const imagesLoadedOptions = { background: '.my-bg-image-el' }
+
+
+        let arrTest = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+        // const childElements = this.props.elements.map(function (e) {
+        const childElements = arrTest.map(function (item) {
             return (
-                <li className="image-element-class">
-                    <img src={element.src} />
+                <li className="image-element-class" key={item}>
+                    <img src={`./images/${item}.jpg`} />
                 </li>
             )
         })

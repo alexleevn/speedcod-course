@@ -18,7 +18,7 @@ export default class Grid extends React.Component {
         ))
 
         return (
-            <div className="grid pa2 ba b--gray fl w-100">
+            <div className="grid pa2 ba b--gray fl w-90 center">
                 {lstBlock}
             </div>
         )
