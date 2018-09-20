@@ -1,7 +1,12 @@
 'use strict'
 
 import React from 'react';
+
 import Block from './block';
+
+// var MansonryMixin = require('react-masonry-mixin')(React);
+import MansonryMixin from 'react-masonry-mixin';
+var A = MansonryMixin(React);
 
 export default class Grid extends React.Component {
     render() {
