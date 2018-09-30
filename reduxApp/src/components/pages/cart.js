@@ -2,11 +2,30 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Panel, Col, Row, Well, Button, ButtonGroup, Label } from 'react-bootstrap';
+import { Modal, Panel, Col, Row, Well, Button, ButtonGroup, Label } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { deleteCartItem, updateCart } from '../../actions/cartActions';
 
 class Cart extends React.Component {
+
+    constructor() {
+        super();
+        this.state = {
+            showModal: false
+        }
+    }
+
+    open() {
+        this.setState({
+            showModal: true
+        })
+    }
+
+    close() {
+        this.setState({
+            showModal: false
+        })
+    }
 
     onDelete(_id) {
         // console.log('On delete ....');
@@ -30,7 +49,7 @@ class Cart extends React.Component {
         this.props.updateCart(_id, 1);
     }
     onDecrement(_id, quantity) {
-        if(quantity > 1){
+        if (quantity > 1) {
             this.props.updateCart(_id, -1);
         }
     }
@@ -77,6 +96,28 @@ class Cart extends React.Component {
                             </ButtonGroup>
                         </Col>
                     </Row>
+
+                    <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
+
+                        <Modal.Header closeButton>
+                            <Modal.Title>Thank You!</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body>
+                            <h6>Your order has been saved</h6>
+                            You will receive an email confirmation.
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Col xs={6}>
+                                <h6>total $: </h6>
+                            </Col>
+                            <Col xs={6}>
+                                <Button onClick={this.close.bind(this)}>Close</Button>
+                            </Col>
+                        </Modal.Footer>
+                    </Modal>
+
                 </Panel>
             )
         }, this)
@@ -84,6 +125,17 @@ class Cart extends React.Component {
         return (
             <Panel header="Cart" bsStyle="primary" style={{ padding: '5px' }}>
                 {cartItemList}
+                <Row>
+                    <Col xs={12}>
+                        <h6>Total amount:</h6>
+                        <Button
+                            onClick={this.open.bind(this)}
+                            bsStyle="success"
+                            bsSize="small">
+                            PROCESS TO CHECKOUT
+                        </Button>
+                    </Col>
+                </Row>
             </Panel>
         )
     }
