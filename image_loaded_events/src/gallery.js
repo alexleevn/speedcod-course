@@ -25,7 +25,7 @@ class Gallery extends React.Component {
             return null;
         }
         return (
-            <span className="spinner">Spiner</span>
+            <span className="spinner">Loading ...</span>
         )
     }
 
